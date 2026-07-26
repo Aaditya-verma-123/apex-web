@@ -30,7 +30,7 @@ export const PROJECTS = [
       "Tailwind",
       "Framer Motion",
     ],
-    github: "https://github.com/YOUR_USERNAME/apex-os",
+    github: "https://github.com/Aaditya-verma-123/apex-os",
   },
   {
     title: "Nexus News",
@@ -41,7 +41,7 @@ export const PROJECTS = [
       "API",
       "Tailwind",
     ],
-    github: "https://github.com/YOUR_USERNAME/news-project",
+    github: "https://github.com/Aadi1234321/news-project",
   },
   {
     title: "AI Jarvis",
@@ -52,6 +52,69 @@ export const PROJECTS = [
       "OpenAI",
       "Automation",
     ],
-    github: "https://github.com/YOUR_USERNAME/ai-jarvis",
+    github: "https://github.com/Aadi1234321/aaditya",
+  },
+];
+import {
+  Globe,
+  Code2,
+  Shield,
+  Database,
+  GitBranch,
+} from "lucide-react";
+
+export const SKILLS = [
+  {
+    title: "Frontend",
+    icon: Globe,
+    skills: [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    title: "Programming",
+    icon: Code2,
+    skills: [
+      "TypeScript",
+      "JavaScript",
+      "Python",
+    ],
+  },
+  {
+    title: "Cybersecurity",
+    icon: Shield,
+    skills: [
+      "Networking",
+      "Linux",
+      "Security Fundamentals",
+    ],
+  },
+  {
+    title: "AI",
+    icon: Brain,
+    skills: [
+      "Prompt Engineering",
+      "OpenAI APIs",
+      "Automation",
+    ],
+  },
+  {
+    title: "Database",
+    icon: Database,
+    skills: [
+      "SQL",
+      "MongoDB",
+    ],
+  },
+  {
+    title: "Tools",
+    icon: GitBranch,
+    skills: [
+      "Git",
+      "GitHub",
+      "VS Code",
+    ],
   },
 ];
