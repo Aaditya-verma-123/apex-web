@@ -52,7 +52,7 @@ export const PROJECTS = [
       "Firebase",
       "Tailwind CSS",
     ],
-    github: "https://github.com/Aadi1234321/aaditya",
+    github: "https://github.com/Aadi1234321/chat-app",
     live: "",
   },
   {
@@ -74,31 +74,37 @@ export const SKILLS = [
   {
     title: "Frontend",
     icon: Globe,
+    level: 90,
     skills: ["React", "Next.js", "Tailwind CSS"],
   },
   {
     title: "Programming",
     icon: Code2,
+    level: 85,
     skills: ["TypeScript", "JavaScript", "Python"],
   },
   {
     title: "Cybersecurity",
     icon: Shield,
+    level: 80,
     skills: ["Networking", "Linux", "Security Fundamentals"],
   },
   {
     title: "AI",
     icon: Brain,
+    level: 75,
     skills: ["Prompt Engineering", "OpenAI APIs", "Automation"],
   },
   {
     title: "Database",
     icon: Database,
+    level: 70,
     skills: ["SQL", "MongoDB"],
   },
   {
     title: "Tools",
     icon: GitBranch,
+    level: 88,
     skills: ["Git", "GitHub", "VS Code"],
   },
 ];

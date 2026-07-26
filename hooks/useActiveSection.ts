@@ -7,6 +7,8 @@ const sections = [
   "about",
   "projects",
   "skills",
+  "journey",
+  "contact",
 ];
 
 export default function useActiveSection() {
@@ -15,20 +17,29 @@ export default function useActiveSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        console.log(
+          entries.map((e) => ({
+            id: e.target.id,
+            intersecting: e.isIntersecting,
+            ratio: e.intersectionRatio,
+          }))
+        );
+
         const visible = entries.find((entry) => entry.isIntersecting);
 
         if (visible) {
+          console.log("Active:", visible.target.id);
           setActive(visible.target.id);
         }
       },
       {
-        rootMargin: "-45% 0px -45% 0px",
-        threshold: 0,
+        threshold: 0.3,
       }
     );
 
     sections.forEach((id) => {
       const el = document.getElementById(id);
+      console.log("Observing:", id, el);
 
       if (el) observer.observe(el);
     });

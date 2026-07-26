@@ -1,7 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Code2 } from "lucide-react";
+import Image from "next/image";
+import { ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+
 
 type ProjectCardProps = {
   title: string;
@@ -16,15 +19,29 @@ export default function ProjectCard({
   title,
   description,
   technologies,
+  image,
   github,
   live,
 }: ProjectCardProps) {
   return (
     <motion.div
-      whileHover={{ y: -8 }}
+      whileHover={{
+  y: -10,
+  scale: 1.02,
+}}
       transition={{ duration: 0.25 }}
-      className="overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/60 backdrop-blur-xl"
+      className="group overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/60 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]"
     >
+      <div className="group relative h-60 overflow-hidden">
+  <Image
+    src={image}
+    alt={title}
+    fill
+    className="object-cover transition duration-500 group-hover:scale-110"
+  />
+
+  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/20 to-transparent" />
+</div>
 
       <div className="space-y-5 p-6">
         <div>
@@ -36,7 +53,7 @@ export default function ProjectCard({
           {technologies.map((tech) => (
             <span
               key={tech}
-              className="rounded-full bg-white/10 px-3 py-1 text-sm"
+              className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-300 transition hover:bg-cyan-500/20"
             >
               {tech}
             </span>
@@ -49,7 +66,7 @@ export default function ProjectCard({
               href={live}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 hover:bg-blue-500"
+              className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-2 transition hover:-translate-y-1 hover:bg-white/10"
             >
               <ExternalLink size={18} />
               Live
@@ -61,9 +78,9 @@ export default function ProjectCard({
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg border border-white/20 px-4 py-2 hover:bg-white/10"
+              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-white transition hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/30"
             >
-              <Code2 size={18} />
+              <FaGithub className="text-lg" />
               GitHub
             </a>
           )}
