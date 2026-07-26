@@ -17,3 +17,41 @@ export const ABOUT_CARDS = [
     icon: Brain,
   },
 ];
+import { ArrowUpRight } from "lucide-react";
+
+export const PROJECTS = [
+  {
+    title: "APEX OS Portfolio",
+    description:
+      "A premium developer portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind",
+      "Framer Motion",
+    ],
+    github: "https://github.com/YOUR_USERNAME/apex-os",
+  },
+  {
+    title: "Nexus News",
+    description:
+      "A responsive news platform with categorized news and a modern interface.",
+    technologies: [
+      "Next.js",
+      "API",
+      "Tailwind",
+    ],
+    github: "https://github.com/YOUR_USERNAME/news-project",
+  },
+  {
+    title: "AI Jarvis",
+    description:
+      "An AI assistant focused on productivity and intelligent workflows.",
+    technologies: [
+      "Python",
+      "OpenAI",
+      "Automation",
+    ],
+    github: "https://github.com/YOUR_USERNAME/ai-jarvis",
+  },
+];
