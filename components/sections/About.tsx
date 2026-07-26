@@ -8,7 +8,7 @@ import { ABOUT_CARDS } from "@/lib/data";
 
 export default function About() {
   return (
-    <section id="about" className="py-28">
+    <section id="about" className="scroll-mt-32 py-28">
       <Container>
         <SectionTitle
           eyebrow="ABOUT"

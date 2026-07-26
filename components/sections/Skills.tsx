@@ -10,7 +10,7 @@ import { SKILLS } from "@/lib/data";
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-28">
+    <section id="skills" className="scroll-mt-32 py-28">
       <Container>
         <SectionTitle
           eyebrow="SKILLS"

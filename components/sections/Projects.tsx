@@ -11,7 +11,7 @@ import { PROJECTS } from "@/lib/data";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-28">
+    <section id="projects" className="scroll-mt-32 py-28">
       <Container>
         <SectionTitle
           eyebrow="PROJECTS"

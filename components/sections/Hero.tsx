@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="flex min-h-screen items-center py-24"
+       className="scroll-mt-32 flex min-h-screen items-center py-24"
     >
       <Container>
         <div className="grid items-center gap-16 lg:grid-cols-2">
