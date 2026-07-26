@@ -16,27 +16,53 @@ export default function Navbar() {
       <Container>
         <nav className="flex items-center justify-between rounded-2xl border border-white/10 bg-zinc-900/70 px-6 py-4 backdrop-blur-xl">
 
-  {/* Logo */}
-  <Link
-    href="/"
-    className="text-lg font-bold tracking-wide"
-  >
-    APEX OS
-  </Link>
+  {/* Left side */}
+  <div className="flex items-center gap-4">
+    {/* Mobile Menu Button */}
+    <button
+      onClick={() => setOpen(!open)}
+      className="md:hidden"
+      aria-label={open ? "Close menu" : "Open menu"}
+    >
+      {open ? <X size={24} /> : <Menu size={24} />}
+    </button>
+
+    {/* Logo */}
+    <Link
+      href="/"
+      className="text-lg font-bold tracking-wide"
+    >
+      APEX WEB
+    </Link>
+  </div>
 
   {/* Desktop Navigation */}
   <div className="hidden items-center gap-2 md:flex">
-    {/* Navigation items */}
+    {NAVIGATION.map((item) => (
+      <a
+        key={item.id}
+        href={item.href}
+        className={`relative rounded-lg px-4 py-2 text-sm font-medium transition ${
+          active === item.id
+            ? "text-white"
+            : "text-zinc-400 hover:text-white"
+        }`}
+      >
+        {active === item.id && (
+          <motion.span
+            layoutId="active-pill"
+            className="absolute inset-0 -z-10 rounded-lg bg-white/10"
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 30,
+            }}
+          />
+        )}
+        {item.label}
+      </a>
+    ))}
   </div>
-
-  {/* Mobile Menu Button */}
-  <button
-    onClick={() => setOpen(!open)}
-    className="md:hidden"
-    aria-label={open ? "Close menu" : "Open menu"}
-  >
-    {open ? <X size={24} /> : <Menu size={24} />}
-  </button>
 
   {/* Desktop Resume Button */}
   <a

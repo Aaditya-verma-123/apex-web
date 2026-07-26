@@ -1,61 +1,7 @@
-import { GraduationCap, ShieldCheck, Brain } from "lucide-react";
-
-export const ABOUT_CARDS = [
-  {
-    title: "Education",
-    description: "B.Tech Aspirant | Preparing for a career in Software Engineering.",
-    icon: GraduationCap,
-  },
-  {
-    title: "Cybersecurity",
-    description: "Building a strong foundation through hands-on learning and certifications.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Current Focus",
-    description: "AI, Full-Stack Development, Data Structures & Algorithms.",
-    icon: Brain,
-  },
-];
-import { ArrowUpRight } from "lucide-react";
-
-export const PROJECTS = [
-  {
-    title: "APEX OS Portfolio",
-    description:
-      "A premium developer portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind",
-      "Framer Motion",
-    ],
-    github: "https://github.com/Aaditya-verma-123/apex-os",
-  },
-  {
-    title: "Nexus News",
-    description:
-      "A responsive news platform with categorized news and a modern interface.",
-    technologies: [
-      "Next.js",
-      "API",
-      "Tailwind",
-    ],
-    github: "https://github.com/Aadi1234321/news-project",
-  },
-  {
-    title: "AI Jarvis",
-    description:
-      "An AI assistant focused on productivity and intelligent workflows.",
-    technologies: [
-      "Python",
-      "OpenAI",
-      "Automation",
-    ],
-    github: "https://github.com/Aadi1234321/aaditya",
-  },
-];
 import {
+  GraduationCap,
+  ShieldCheck,
+  Brain,
   Globe,
   Code2,
   Shield,
@@ -63,58 +9,103 @@ import {
   GitBranch,
 } from "lucide-react";
 
+export const ABOUT_CARDS = [
+  {
+    title: "Education",
+    description: "IIT Madras BS Degree & Future B.Tech CSE",
+    icon: GraduationCap,
+  },
+  {
+    title: "Cybersecurity",
+    description: "Google Cybersecurity Professional Certificate",
+    icon: ShieldCheck,
+  },
+  {
+    title: "AI & ML",
+    description: "Building AI-powered applications and automation",
+    icon: Brain,
+  },
+];
+
+export const PROJECTS = [
+  {
+    title: "APEX OS",
+    description:
+      "A modern personal portfolio built with Next.js, Tailwind CSS and Framer Motion.",
+    image: "/projects/apex-os.png",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
+    github: "https://github.com/Aaditya-verma-123/apex-os",
+    live: "",
+  },
+  {
+    title: "Chat Application",
+    description:
+      "A real-time chat application with authentication and modern UI.",
+    image: "/projects/chat-app.png",
+    technologies: [
+      "React",
+      "Firebase",
+      "Tailwind CSS",
+    ],
+    github: "https://github.com/Aadi1234321/aaditya",
+    live: "",
+  },
+  {
+    title: "News Website",
+    description:
+      "Responsive news website with category filtering and API integration.",
+    image: "/projects/news-site.png",
+    technologies: [
+      "Next.js",
+      "News API",
+      "Tailwind CSS",
+    ],
+    github: "https://github.com/Aadi1234321/News-project",
+    live: "",
+  },
+];
+
 export const SKILLS = [
   {
     title: "Frontend",
     icon: Globe,
-    skills: [
-      "React",
-      "Next.js",
-      "Tailwind CSS",
-    ],
+    skills: ["React", "Next.js", "Tailwind CSS"],
   },
   {
     title: "Programming",
     icon: Code2,
-    skills: [
-      "TypeScript",
-      "JavaScript",
-      "Python",
-    ],
+    skills: ["TypeScript", "JavaScript", "Python"],
   },
   {
     title: "Cybersecurity",
     icon: Shield,
-    skills: [
-      "Networking",
-      "Linux",
-      "Security Fundamentals",
-    ],
+    skills: ["Networking", "Linux", "Security Fundamentals"],
   },
   {
     title: "AI",
     icon: Brain,
-    skills: [
-      "Prompt Engineering",
-      "OpenAI APIs",
-      "Automation",
-    ],
+    skills: ["Prompt Engineering", "OpenAI APIs", "Automation"],
   },
   {
     title: "Database",
     icon: Database,
-    skills: [
-      "SQL",
-      "MongoDB",
-    ],
+    skills: ["SQL", "MongoDB"],
   },
   {
     title: "Tools",
     icon: GitBranch,
-    skills: [
-      "Git",
-      "GitHub",
-      "VS Code",
-    ],
+    skills: ["Git", "GitHub", "VS Code"],
   },
 ];
+export const CONTACT = {
+  email: "aadityanokhwal5@gmail.com",
+  github: "https://github.com/Aaditya-verma-123",
+  linkedin: "https://linkedin.com/in/aaditya-verma-985117317",
+  instagram: "https://instagram.com/___aaditya_verma___",
+  discord: "aadityaverma0373",
+};
