@@ -212,7 +212,7 @@ https://github.com/Aaditya-verma-123
 
 LinkedIn
 
-(Add your LinkedIn URL)
+https://www.linkedin.com/in/aaditya-verma-985117317/
 
 Instagram
 
