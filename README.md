@@ -1,36 +1,243 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 APEX WEB
 
-## Getting Started
+> A modern, premium developer portfolio built with Next.js, React, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-06B6D4?logo=tailwindcss)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+---
+
+## 🌐 Live Demo
+
+🔗 **https://apex-os-lime.vercel.app/**
+
+---
+
+# 📖 About
+
+APEX WEB is my personal portfolio website showcasing my journey, skills, projects, and goals as an aspiring Software Engineer and Cybersecurity enthusiast.
+
+Designed with a modern glassmorphism UI, smooth animations, and responsive layouts, it delivers a premium user experience while highlighting my work and achievements.
+
+---
+
+# ✨ Features
+
+- 🎨 Modern Glassmorphism UI
+- ⚡ Next.js 16 App Router
+- ⚛️ React 19
+- 📘 TypeScript
+- 🎭 Framer Motion Animations
+- 📱 Fully Responsive Design
+- 🖱️ Custom Animated Cursor
+- 📊 Scroll Progress Indicator
+- 🚀 Animated Hero Section
+- 💼 Premium Project Showcase
+- 🧠 Skills Section
+- 🛣️ Interactive Journey Timeline
+- 📬 Contact Section
+- 🌙 Optimized for Performance
+- 🔍 SEO Friendly
+
+---
+
+# 🛠️ Tech Stack
+
+### Frontend
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+
+### UI
+
+- Lucide React
+- React Icons
+
+### Deployment
+
+- Vercel
+
+---
+
+# 📂 Project Structure
+
+```
+app/
+components/
+├── layout/
+├── sections/
+├── ui/
+public/
+styles/
+lib/
+```
+
+---
+
+# 🚀 Getting Started
+
+## Clone Repository
+
+```bash
+git clone https://github.com/Aaditya-verma-123/apex-os.git
+```
+
+Move into the project
+
+```bash
+cd apex-os
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# 📦 Production Build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run production server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm start
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# 📸 Preview
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Home
+
+- Premium Hero
+- Animated Background
+- Smooth Scrolling
+
+## About
+
+- Introduction
+- Journey
+- Goals
+
+## Projects
+
+- Interactive Cards
+- Live Links
+- GitHub Links
+
+## Skills
+
+- Progress Bars
+- Animated Cards
+
+## Contact
+
+- Social Links
+- Email
+
+---
+
+# 🎯 Roadmap
+
+## ✅ Version 1.0
+
+- Responsive Design
+- Glassmorphism
+- Hero Section
+- Projects
+- Skills
+- Journey
+- Contact
+- Custom Cursor
+- Scroll Progress Bar
+- Animations
+
+## 🚀 Version 1.1
+
+- Dark / Light Mode
+- AI Assistant
+- Command Palette
+- Resume Download
+- Contact Form
+- GitHub API Integration
+
+## 🔮 Future Plans
+
+- Blog
+- CMS
+- Analytics Dashboard
+- Visitor Counter
+- Multi-language Support
+
+---
+
+# 🤝 Contributing
+
+Contributions, suggestions, and feedback are always welcome.
+
+Feel free to fork this repository and open a Pull Request.
+
+---
+
+# 📬 Contact
+
+**Aaditya Verma**
+
+GitHub
+
+https://github.com/Aaditya-verma-123
+
+LinkedIn
+
+(Add your LinkedIn URL)
+
+Instagram
+
+https://instagram.com/___aaditya_verma___
+
+---
+
+# ⭐ Support
+
+If you like this project, please consider giving it a ⭐ on GitHub.
+
+It motivates me to continue building and improving open-source projects.
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+<div align="center">
+
+### 🚀 Built with Next.js, React & TypeScript
+
+Made with ❤️ by **Aaditya Verma**
+
+</div>
