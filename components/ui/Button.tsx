@@ -1,16 +1,58 @@
 import { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "ghost";
+
+type ButtonSize =
+  | "sm"
+  | "md"
+  | "lg";
+
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+}
+
+const variants = {
+  primary:
+    "bg-blue-600 text-white hover:bg-blue-500",
+
+  secondary:
+    "bg-white/10 text-white hover:bg-white/20",
+
+  outline:
+    "border border-blue-500/40 bg-transparent text-blue-400 hover:bg-blue-500/10",
+
+  ghost:
+    "bg-transparent text-slate-300 hover:bg-white/10 hover:text-white",
+};
+
+const sizes = {
+  sm: "h-9 px-4 text-sm",
+  md: "h-11 px-5 text-sm",
+  lg: "h-12 px-6 text-base",
+};
 
 export default function Button({
   className,
+  variant = "primary",
+  size = "md",
   ...props
 }: ButtonProps) {
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-500 hover:scale-[1.02] active:scale-95",
+        "inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-300",
+        "focus:outline-none focus:ring-2 focus:ring-blue-500/40",
+        "disabled:pointer-events-none disabled:opacity-50",
+        "active:scale-95",
+        variants[variant],
+        sizes[size],
         className
       )}
       {...props}
