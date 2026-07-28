@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Container from "@/components/ui/Container";
-import { NAVIGATION } from "@/lib/navigation";
+import { navigation } from "@/lib/navigation";
 import useActiveSection from "@/hooks/useActiveSection";
 export default function Navbar() {
   const active = useActiveSection(); 
@@ -38,7 +38,7 @@ export default function Navbar() {
 
   {/* Desktop Navigation */}
   <div className="hidden items-center gap-2 md:flex">
-    {NAVIGATION.map((item) => (
+    {navigation.map((item) => (
       <a
         key={item.id}
         href={item.href}
@@ -84,7 +84,7 @@ export default function Navbar() {
       className="mt-3 rounded-2xl border border-white/10 bg-zinc-900/90 p-6 backdrop-blur-xl md:hidden"
     >
       <div className="flex flex-col gap-4">
-        {NAVIGATION.map((item) => (
+        {navigation.map((item) => (
           <a
             key={item.id}
             href={item.href}
