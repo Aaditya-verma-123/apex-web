@@ -1,4 +1,4 @@
-export const navigation = [
+export const NAVIGATION = [
   {
     id: "home",
     name: "Home",

@@ -10,44 +10,81 @@ import HeroBackground from "./HeroBackground";
 import HeroStats from "./HeroStats";
 import ScrollIndicator from "./ScrollIndicator";
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden">
+    <section className="relative flex min-h-screen items-center overflow-hidden pt-40 lg:pt-44">
       <HeroBackground />
 
       <Container>
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            ease: "easeOut",
-          }}
-          className="mx-auto max-w-4xl text-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="mx-auto max-w-5xl text-center"
         >
           {/* Greeting */}
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-cyan-400">
+          <motion.p
+            variants={itemVariants}
+            className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-cyan-400"
+          >
             Hi, I'm
-          </p>
+          </motion.p>
 
           {/* Name */}
-          <h1 className="text-5xl font-black tracking-tight text-white sm:text-6xl md:text-7xl">
+          <motion.h1
+            variants={itemVariants}
+            className="text-5xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
+          >
             Aaditya Verma
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
-          <h2 className="mt-6 text-xl font-medium text-zinc-300 md:text-2xl">
+          <motion.h2
+            variants={itemVariants}
+            className="mt-6 text-xl font-medium text-zinc-300 md:text-2xl"
+          >
             Developer • Cybersecurity Learner • Future AI Engineer
-          </h2>
+          </motion.h2>
 
           {/* Description */}
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-zinc-400">
+          <motion.p
+            variants={itemVariants}
+            className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-zinc-400 md:text-xl"
+          >
             Building modern web applications, exploring cybersecurity, and
             creating AI-powered solutions that solve real-world problems.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <motion.div
+            variants={itemVariants}
+            className="mt-12 flex flex-wrap justify-center gap-5"
+          >
             <Button>
               View Projects
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -63,13 +100,20 @@ export default function Hero() {
                 Download Resume
               </a>
             </Button>
-          </div>
+          </motion.div>
 
           {/* Stats */}
-          <HeroStats />
+          <motion.div
+            variants={itemVariants}
+            className="mt-20"
+          >
+            <HeroStats />
+          </motion.div>
 
           {/* Scroll Indicator */}
-          <ScrollIndicator />
+          <motion.div variants={itemVariants}>
+            <ScrollIndicator />
+          </motion.div>
         </motion.div>
       </Container>
     </section>

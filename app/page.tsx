@@ -1,7 +1,8 @@
 import Hero from "@/components/home/Hero";
 import CurrentlyBuilding from "@/components/home/CurrentlyBuilding";
-import Skills from "@/components/home/Skills";
 import FeaturedProjects from "@/components/home/FeaturedProjects";
+import Skills from "@/components/home/Skills";
+import Journey from "@/components/home/Journey";
 import Contact from "@/components/home/Contact";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <CurrentlyBuilding />
       <FeaturedProjects />
       <Skills />
+      <Journey />
       <Contact />
     </>
   );

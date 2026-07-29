@@ -1,11 +1,21 @@
+import type { LucideIcon } from "lucide-react";
+import {
+  Monitor,
+  Server,
+  ShieldCheck,
+  Wrench,
+} from "lucide-react";
+
 export interface SkillCategory {
   title: string;
+  icon: LucideIcon;
   skills: string[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
     title: "Frontend",
+    icon: Monitor,
     skills: [
       "HTML",
       "CSS",
@@ -18,25 +28,30 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: "Backend",
+    icon: Server,
     skills: [
       "Node.js",
-      "REST API",
+      "REST APIs",
       "Authentication",
       "SQL",
+      "JSON",
     ],
   },
   {
     title: "Cybersecurity",
+    icon: ShieldCheck,
     skills: [
       "Linux",
       "Networking",
       "Security Risks",
-      "Threat Analysis",
+      "Threat Detection",
+      "Risk Assessment",
       "SQL",
     ],
   },
   {
-    title: "Tools",
+    title: "Development Tools",
+    icon: Wrench,
     skills: [
       "Git",
       "GitHub",

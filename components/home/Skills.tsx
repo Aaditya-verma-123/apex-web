@@ -1,38 +1,50 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 import SectionTitle from "@/components/ui/SectionTitle";
+import Container from "@/components/ui/Container";
+
+import SkillCard from "@/components/skills/SkillCard";
+
 import { skillCategories } from "@/data/skills";
 
-export default function SkillsPreview() {
+export default function Skills() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-      <SectionTitle
-        eyebrow="Skills"
-        title="Technologies I Work With"
-        description="A growing toolkit of technologies, frameworks, and platforms that I use to build modern web applications and strengthen my cybersecurity knowledge."
-      />
+    <section
+      id="skills"
+      className="relative overflow-hidden py-28"
+    >
+      <Container>
+        <SectionTitle
+          eyebrow="Skills"
+          title="Technologies I Work With"
+          description="A collection of technologies, tools, and cybersecurity concepts that I use to build modern applications while continuously expanding my expertise."
+        />
 
-      <div className="grid gap-6 md:grid-cols-2">
-        {skillCategories.map((category) => (
-          <div
-            key={category.title}
-            className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur transition-all duration-300 hover:border-blue-500/40 hover:bg-white/10"
-          >
-            <h3 className="mb-6 text-2xl font-semibold text-white">
-              {category.title}
-            </h3>
-
-            <div className="flex flex-wrap gap-3">
-              {category.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300 transition-colors duration-200 hover:border-blue-400 hover:text-white"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.12,
+              },
+            },
+          }}
+          className="mt-16 grid gap-8 md:grid-cols-2"
+        >
+          {skillCategories.map((category, index) => (
+            <SkillCard
+              key={category.title}
+              category={category}
+              index={index}
+            />
+          ))}
+        </motion.div>
+      </Container>
     </section>
   );
 }

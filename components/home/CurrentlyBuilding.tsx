@@ -1,65 +1,129 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, ExternalLink } from "lucide-react";
+
+import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
+import Card from "@/components/ui/Card";
+import Badge from "@/components/ui/Badge";
+import Button from "@/components/ui/Button";
 
 const items = [
   {
     title: "APEX WEB",
     description:
-      "Building a premium developer platform using Next.js, React, Tailwind CSS, and Framer Motion.",
-    status: "In Progress",
+      "Building a premium personal portfolio using Next.js, TypeScript, Tailwind CSS, and Framer Motion with a strong focus on UI, animations, and performance.",
+    status: "Active Project",
+    variant: "success" as const,
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind",
+      "Framer Motion",
+    ],
+    href: "/projects",
   },
   {
-    title: "Google Cybersecurity Certificate",
+    title: "Google Cybersecurity Professional Certificate",
     description:
-      "Learning networking, Linux, SQL, security operations, and security best practices.",
+      "Learning networking, Linux, SQL, security operations, and security best practices while building a strong cybersecurity foundation.",
     status: "Learning",
+    variant: "info" as const,
+    technologies: [
+      "Linux",
+      "Networking",
+      "SQL",
+      "Security",
+    ],
+    href: "/journey",
   },
   {
-    title: "IIT Madras BS Degree",
+    title: "AI Assistant",
     description:
-      "Pursuing Data Science and Applications while strengthening software development skills.",
-    status: "Ongoing",
+      "Designing an intelligent assistant that combines automation, AI, and productivity features. Currently in planning and research.",
+    status: "Coming Soon",
+    variant: "warning" as const,
+    technologies: [
+      "AI",
+      "Python",
+      "LLMs",
+      "Automation",
+    ],
+    href: "/projects",
   },
 ];
 
 export default function CurrentlyBuilding() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-      <SectionTitle
-  eyebrow="Currently Building"
-  title="What I'm Working On"
-  description="I enjoy continuously learning, building real-world projects, and improving my technical skills every day."
-/>
+    <section className="py-28">
+      <Container>
+        <SectionTitle
+          eyebrow="Currently Building"
+          title="What I'm Working On"
+          description="I'm continuously learning new technologies while building projects that improve my skills and solve real-world problems."
+        />
 
-      <div className="grid gap-6 md:grid-cols-3">
-        {items.map((item) => (
-          <div
-            key={item.title}
-            className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:border-blue-500/40 hover:bg-white/10"
-          >
-            <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400">
-              {item.status}
-            </span>
+        <div className="mt-14 grid gap-8 lg:grid-cols-3">
+          {items.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+              }}
+              viewport={{ once: true }}
+            >
+              <Card className="flex h-full flex-col">
+                <div className="flex items-center justify-between">
+                  <Badge variant={item.variant}>
+                    <span className="mr-2 h-2 w-2 rounded-full bg-current" />
+                    {item.status}
+                  </Badge>
 
-            <h3 className="mt-5 text-xl font-semibold text-white">
-              {item.title}
-            </h3>
+                  <ExternalLink
+                    size={18}
+                    className="text-slate-500"
+                  />
+                </div>
 
-            <p className="mt-3 text-sm leading-7 text-slate-400">
-              {item.description}
-            </p>
-          </div>
-        ))}
-      </div>
+                <h3 className="mt-6 text-2xl font-bold text-white">
+                  {item.title}
+                </h3>
 
-      <div className="mt-10">
-        <Link
-          href="/journey"
-          className="text-blue-400 transition hover:text-blue-300"
-        >
-          View my complete journey →
-        </Link>
-      </div>
+                <p className="mt-4 flex-grow leading-7 text-slate-400">
+                  {item.description}
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-2">
+                  {item.technologies.map((tech) => (
+                    <Badge
+                      key={tech}
+                      variant="outline"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+
+                <Button
+                  asChild
+                  variant="ghost"
+                  className="mt-8 w-fit px-0"
+                >
+                  <Link href={item.href}>
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </Container>
     </section>
   );
 }
