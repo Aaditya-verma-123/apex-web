@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+import { Toaster } from "sonner";
+
 export const metadata: Metadata = {
   title: {
     default: "APEX WEB",
@@ -28,6 +30,13 @@ export default function RootLayout({
         </main>
 
         <Footer />
+
+        <Toaster
+          position="top-right"
+          richColors
+          closeButton
+          duration={2500}
+        />
       </body>
     </html>
   );

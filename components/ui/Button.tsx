@@ -1,4 +1,6 @@
-import { ButtonHTMLAttributes } from "react";
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+
 import { cn } from "@/lib/utils";
 
 type ButtonVariant =
@@ -13,9 +15,10 @@ type ButtonSize =
   | "lg";
 
 interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  asChild?: boolean;
 }
 
 const variants = {
@@ -42,10 +45,13 @@ export default function Button({
   className,
   variant = "primary",
   size = "md",
+  asChild = false,
   ...props
 }: ButtonProps) {
+  const Comp = asChild ? Slot : "button";
+
   return (
-    <button
+    <Comp
       className={cn(
         "inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-300",
         "focus:outline-none focus:ring-2 focus:ring-blue-500/40",

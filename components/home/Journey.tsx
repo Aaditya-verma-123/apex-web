@@ -2,35 +2,12 @@
 
 import { motion } from "framer-motion";
 
+import { timeline } from "@/data/timeline";
+
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
-
-const journey = [
-  {
-    year: "2024",
-    title: "Started Web Development",
-    description:
-      "Learned HTML, CSS and JavaScript while building my first responsive websites and exploring modern frontend development.",
-  },
-  {
-    year: "2025",
-    title: "Cybersecurity Journey",
-    description:
-      "Started the Google Cybersecurity Professional Certificate and developed a strong foundation in networking, Linux and security fundamentals.",
-  },
-  {
-    year: "2026",
-    title: "IIT Madras BS Degree",
-    description:
-      "Began the IIT Madras BS Degree while improving my software engineering, AI and full-stack development skills.",
-  },
-  {
-    year: "Future",
-    title: "B.Tech & AI Engineer",
-    description:
-      "Planning to pursue B.Tech in Computer Science and build AI-powered products with real-world impact while contributing to open source.",
-  },
-];
+import GlassCard from "@/components/ui/GlassCard";
+import Badge from "@/components/ui/Badge";
 
 export default function Journey() {
   return (
@@ -39,64 +16,88 @@ export default function Journey() {
         <SectionTitle
           eyebrow="JOURNEY"
           title="My Learning Journey"
-          description="Every milestone has shaped my skills, mindset and long-term vision."
+          description="Every milestone represents another step in my journey as a developer, cybersecurity learner, and future AI engineer."
         />
 
         <div className="relative mt-20">
-
           {/* Timeline Line */}
-          <div className="absolute left-3 top-0 h-full w-1 rounded-full bg-gradient-to-b from-cyan-400 via-blue-500 to-transparent" />
+          <div className="absolute left-3 top-0 h-full w-1 rounded-full bg-gradient-to-b from-cyan-400 via-blue-500 to-transparent shadow-[0_0_25px_rgba(34,211,238,0.35)]" />
 
           <div className="space-y-12">
-            {journey.map((item, index) => (
-              <motion.div
-                key={item.year}
-                initial={{
-                  opacity: 0,
-                  x: -50,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                viewport={{ once: true }}
-                                whileHover={{
-                  y: -8,
-                  scale: 1.025,
-                }}
-                transition={{
-  duration: 0.35,
-  delay: index * 0.06,
-  ease: "easeOut",
-  type: "spring",
-  stiffness: 350,
-  damping: 20,
-}}
+            {timeline.map((item, index) => {
+              const badgeVariant =
+                item.status === "completed"
+                  ? "success"
+                  : item.status === "current"
+                  ? "warning"
+                  : "info";
 
-                
-                className="relative ml-14 rounded-3xl border border-white/10 bg-zinc-900/60 p-7 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40 hover:shadow-[0_20px_60px_rgba(34,211,238,0.15)]"
-              >
-                {/* Timeline Dot */}
-                <div className="absolute -left-[58px] top-8 flex h-7 w-7 items-center justify-center rounded-full border-4 border-zinc-950 bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.8)]">
-                  <div className="h-2 w-2 rounded-full bg-white" />
-                </div>
+              return (
+                <motion.div
+                  key={`${item.year}-${item.title}`}
+                  initial={{
+                    opacity: 0,
+                    x: -50,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  whileHover={{
+                    y: -8,
+                    scale: 1.02,
+                  }}
+                  transition={{
+                    duration: 0.35,
+                    delay: index * 0.06,
+                    ease: "easeOut",
+                    type: "spring",
+                    stiffness: 350,
+                    damping: 20,
+                  }}
+                  className="relative"
+                >
+                  {/* Timeline Dot */}
+                  <motion.div
+                    whileHover={{
+                      scale: 1.2,
+                      rotate: 180,
+                    }}
+                    transition={{
+                      duration: 0.35,
+                    }}
+                    className="absolute -left-[44px] top-8 z-20 flex h-7 w-7 items-center justify-center rounded-full border-4 border-zinc-950 bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.8)]"
+                  >
+                    <div className="h-2 w-2 rounded-full bg-white" />
+                  </motion.div>
 
-                {/* Year */}
-                <span className="inline-flex rounded-full bg-cyan-500/10 px-4 py-1 text-sm font-semibold text-cyan-300">
-                  {item.year}
-                </span>
+                  <GlassCard className="ml-14 p-7 transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/10 hover:shadow-[0_20px_60px_rgba(34,211,238,0.15)]">
+                    {/* Header */}
+                    <div className="flex flex-wrap items-center justify-between gap-4">
+                      <Badge variant={badgeVariant}>
+                        {item.status.charAt(0).toUpperCase() +
+                          item.status.slice(1)}
+                      </Badge>
 
-                {/* Title */}
-                <h3 className="mt-5 text-2xl font-bold text-white">
-                  {item.title}
-                </h3>
+                      <Badge variant="outline">
+                        {item.year}
+                      </Badge>
+                    </div>
 
-                {/* Description */}
-                <p className="mt-4 leading-7 text-zinc-400">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
+                    {/* Title */}
+                    <h3 className="mt-6 text-2xl font-bold text-white">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="mt-4 leading-7 text-zinc-400">
+                      {item.description}
+                    </p>
+                  </GlassCard>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </Container>

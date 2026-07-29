@@ -1,79 +1,77 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight, Download } from "lucide-react";
+
+import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+
+import HeroBackground from "./HeroBackground";
+import HeroStats from "./HeroStats";
+import ScrollIndicator from "./ScrollIndicator";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-3xl" />
-      </div>
+    <section className="relative flex min-h-screen items-center overflow-hidden">
+      <HeroBackground />
 
-      <div className="mx-auto flex min-h-[85vh] max-w-7xl flex-col items-center justify-between gap-16 px-6 py-20 md:flex-row lg:px-8">
-        {/* Left */}
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl"
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+          }}
+          className="mx-auto max-w-4xl text-center"
         >
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-blue-400">
-            Welcome to APEX WEB
+          {/* Greeting */}
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-cyan-400">
+            Hi, I'm
           </p>
 
-          <h1 className="text-5xl font-extrabold leading-tight text-white md:text-6xl">
+          {/* Name */}
+          <h1 className="text-5xl font-black tracking-tight text-white sm:text-6xl md:text-7xl">
             Aaditya Verma
           </h1>
 
-          <h2 className="mt-4 text-xl text-slate-300 md:text-2xl">
-            Full Stack Developer • Cybersecurity Learner • AI Enthusiast
+          {/* Subtitle */}
+          <h2 className="mt-6 text-xl font-medium text-zinc-300 md:text-2xl">
+            Developer • Cybersecurity Learner • Future AI Engineer
           </h2>
 
-          <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
-            Building secure, intelligent, and modern digital experiences while
-            continuously learning new technologies and creating impactful
-            solutions.
+          {/* Description */}
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-zinc-400">
+            Building modern web applications, exploring cybersecurity, and
+            creating AI-powered solutions that solve real-world problems.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/projects"
-              className="rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-500"
-            >
+          {/* CTA Buttons */}
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Button>
               View Projects
-            </Link>
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
 
-            <Link
-              href="/contact"
-              className="rounded-xl border border-white/10 px-6 py-3 font-medium text-white transition hover:border-white/30"
-            >
-              Contact Me
-            </Link>
+            <Button variant="secondary" asChild>
+              <a
+                href="/resume/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Download Resume
+              </a>
+            </Button>
           </div>
-        </motion.div>
 
-        {/* Right */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
-          className="relative"
-        >
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-2 backdrop-blur">
-            <Image
-              src="/images/profile/profile.png"
-              alt="Aaditya Verma"
-              width={420}
-              height={520}
-              priority
-              className="rounded-2xl object-cover"
-            />
-          </div>
+          {/* Stats */}
+          <HeroStats />
+
+          {/* Scroll Indicator */}
+          <ScrollIndicator />
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }
