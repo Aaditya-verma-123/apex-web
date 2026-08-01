@@ -3,24 +3,10 @@ export interface Certificate {
   title: string;
   issuer: string;
   description: string;
-  pdf: string;
-  status: "Completed";
-}
-
-export const certificates: Certificate[] = [
-  {
-    id: 1,
-    title: "Foundations of Cybersecurity",
-    issuer: "Google",
-    description:export interface Certificate {
-  id: number;
-  title: string;
-  issuer: string;
-  description: string;
   image: string;
   pdf: string;
   date: string;
-  credentialId: string;
+ credentialId: string;
   skills: string[];
   status: "Completed";
 }
@@ -49,7 +35,7 @@ export const certificates: Certificate[] = [
     title: "Play It Safe: Manage Security Risks",
     issuer: "Google",
     description:
-      "Focuses on identifying, assessing, and managing security risks using governance and compliance frameworks.",
+      "Focuses on identifying, assessing, and managing security risks using governance, compliance, and security frameworks.",
     image: "/images/certificates/play-it-safe.webp",
     pdf: "/images/certificates/play-it-safe-manage-security-risks.pdf",
     date: "9 June 2026",
@@ -67,7 +53,7 @@ export const certificates: Certificate[] = [
     title: "Connect and Protect: Networks and Network Security",
     issuer: "Google",
     description:
-      "Builds networking knowledge including TCP/IP, protocols, firewalls, VPNs, and network defense.",
+      "Builds networking knowledge including TCP/IP, network protocols, firewalls, VPNs, and network defense techniques.",
     image: "/images/certificates/connect-and-protect.webp",
     pdf: "/images/certificates/connect-and-protect-networks-and-network-security.pdf",
     date: "22 June 2026",
@@ -86,7 +72,7 @@ export const certificates: Certificate[] = [
     title: "Tools of the Trade: Linux and SQL",
     issuer: "Google",
     description:
-      "Developed practical cybersecurity skills using Linux command-line tools and SQL for investigations and analysis.",
+      "Developed practical cybersecurity skills using Linux command-line tools and SQL for security investigations and log analysis.",
     image: "/images/certificates/tools-of-the-trade.webp",
     pdf: "/images/certificates/tools-of-the-trade-linux-and-sql.pdf",
     date: "2 July 2026",
@@ -105,7 +91,7 @@ export const certificates: Certificate[] = [
     title: "Assets, Threats, and Vulnerabilities",
     issuer: "Google",
     description:
-      "Learned how to identify organizational assets, evaluate threats, assess vulnerabilities, and implement security controls.",
+      "Learned how to identify organizational assets, evaluate threats, assess vulnerabilities, and implement effective security controls.",
     image: "/images/certificates/assets-threats.webp",
     pdf: "/images/certificates/assets-threats-and-vulnerabilities.pdf",
     date: "22 July 2026",
@@ -116,47 +102,6 @@ export const certificates: Certificate[] = [
       "Asset Management",
       "Security Controls",
     ],
-    status: "Completed",
-  },
-];
-      "Introduces cybersecurity concepts, security principles, and career fundamentals.",
-    pdf: "/images/certificates/foundations-of-cybersecurity.pdf",
-    status: "Completed",
-  },
-  {
-    id: 2,
-    title: "Play It Safe: Manage Security Risks",
-    issuer: "Google",
-    description:
-      "Focuses on risk management, governance, compliance, and security frameworks.",
-    pdf: "/images/certificates/play-it-safe-manage-security-risks.pdf",
-    status: "Completed",
-  },
-  {
-    id: 3,
-    title: "Connect and Protect: Networks and Network Security",
-    issuer: "Google",
-    description:
-      "Covers networking fundamentals, protocols, and network security concepts.",
-    pdf: "/images/certificates/connect-and-protect-networks-and-network-security.pdf",
-    status: "Completed",
-  },
-  {
-    id: 4,
-    title: "Tools of the Trade: Linux and SQL",
-    issuer: "Google",
-    description:
-      "Builds practical skills with Linux command-line tools and SQL for security analysis.",
-    pdf: "/images/certificates/tools-of-the-trade-linux-and-sql.pdf",
-    status: "Completed",
-  },
-  {
-    id: 5,
-    title: "Assets, Threats, and Vulnerabilities",
-    issuer: "Google",
-    description:
-      "Explores organizational assets, threats, vulnerabilities, and security controls.",
-    pdf: "/images/certificates/assets-threats-and-vulnerabilities.pdf",
     status: "Completed",
   },
 ];
