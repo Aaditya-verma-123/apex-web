@@ -1,19 +1,19 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   CalendarDays,
+  ChevronLeft,
+  ChevronRight,
   Download,
   ExternalLink,
   X,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
-
 import { useCertificate } from "@/context/CertificateContext";
 
 export default function CertificateModal() {
@@ -25,6 +25,49 @@ export default function CertificateModal() {
     previousCertificate,
     certificates,
   } = useCertificate();
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      switch (event.key) {
+        case "Escape":
+          closeCertificate();
+          break;
+        case "ArrowRight":
+          nextCertificate();
+          break;
+        case "ArrowLeft":
+          previousCertificate();
+          break;
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [
+    isOpen,
+    closeCertificate,
+    nextCertificate,
+    previousCertificate,
+  ]);
+
+  // Prevent background scrolling
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   if (!selectedCertificate) return null;
 
@@ -47,21 +90,9 @@ export default function CertificateModal() {
 
           {/* Modal */}
           <motion.div
-            initial={{
-              opacity: 0,
-              scale: 0.95,
-              y: 30,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              scale: 0.95,
-              y: 30,
-            }}
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 30 }}
             transition={{ duration: 0.25 }}
             className="fixed inset-0 z-[101] flex items-center justify-center p-6"
           >
@@ -70,47 +101,49 @@ export default function CertificateModal() {
               {/* Close */}
               <button
                 onClick={closeCertificate}
-                className="absolute right-5 top-5 z-20 rounded-full bg-white/10 p-2 transition hover:bg-white/20"
+                className="absolute right-5 top-5 z-30 rounded-full bg-white/10 p-2 transition hover:bg-white/20"
               >
                 <X className="h-5 w-5 text-white" />
               </button>
 
               {/* Navigation */}
-              <div className="absolute left-5 top-5 z-20 flex items-center gap-3">
-
-                <button
+              <div className="absolute left-5 right-20 top-5 z-20 flex items-center justify-between">
+                <Button
+                  variant="secondary"
+                  size="sm"
                   onClick={previousCertificate}
-                  className="rounded-full bg-white/10 p-2 transition hover:bg-white/20"
                 >
-                  <ChevronLeft className="h-5 w-5 text-white" />
-                </button>
+                  <ChevronLeft className="mr-2 h-4 w-4" />
+                  Previous
+                </Button>
 
-                <span className="rounded-full bg-white/10 px-4 py-2 text-sm text-white">
+                <span className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-medium text-white">
                   {currentIndex + 1} / {certificates.length}
                 </span>
 
-                <button
+                <Button
+                  variant="secondary"
+                  size="sm"
                   onClick={nextCertificate}
-                  className="rounded-full bg-white/10 p-2 transition hover:bg-white/20"
                 >
-                  <ChevronRight className="h-5 w-5 text-white" />
-                </button>
-
+                  Next
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Button>
               </div>
 
-              {/* Image */}
+              {/* Certificate Image */}
               <div className="relative h-[650px] w-full">
                 <Image
                   src={selectedCertificate.image}
                   alt={selectedCertificate.title}
                   fill
                   className="object-contain"
+                  priority
                 />
               </div>
 
-              {/* Content */}
+              {/* Details */}
               <div className="p-8">
-
                 <h2 className="text-3xl font-bold text-white">
                   {selectedCertificate.title}
                 </h2>
@@ -141,7 +174,6 @@ export default function CertificateModal() {
                 </div>
 
                 <div className="mt-8 flex flex-wrap gap-4">
-
                   <Button asChild>
                     <a
                       href={selectedCertificate.pdf}
@@ -165,9 +197,7 @@ export default function CertificateModal() {
                       Download
                     </a>
                   </Button>
-
                 </div>
-
               </div>
             </div>
           </motion.div>

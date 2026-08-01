@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import AnimatedBackground from "@/components/background/AnimatedBackground";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ScrollProgress from "@/components/layout/ScrollProgress";
 
 import { Toaster } from "sonner";
 
@@ -23,7 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ScrollProgress />
         <Navbar />
+        <AnimatedBackground />
+
 
         <main className="min-h-screen">
           {children}
