@@ -1,21 +1,19 @@
-import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
-import Projects from "@/components/sections/Projects";
-import Skills from "@/components/sections/Skills";
-import Journey from "@/components/sections/Journey";
-import Contact from "@/components/sections/Contact";
-import Footer from "@/components/sections/Footer";
+import Hero from "@/components/home/Hero";
+import CurrentlyBuilding from "@/components/home/CurrentlyBuilding";
+import FeaturedProjects from "@/components/home/FeaturedProjects";
+import Skills from "@/components/home/Skills";
+import Journey from "@/components/home/Journey";
+import Contact from "@/components/home/Contact";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <About />
-      <Projects />
+      <CurrentlyBuilding />
+      <FeaturedProjects />
       <Skills />
-      <Journey/>
-      <Contact/>
-      <Footer />
+      <Journey />
+      <Contact />
     </>
   );
 }

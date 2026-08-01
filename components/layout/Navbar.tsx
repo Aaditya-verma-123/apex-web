@@ -1,117 +1,95 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Menu } from "lucide-react";
+import { motion } from "framer-motion";
 
 import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+
+import Logo from "./Logo";
+import NavItem from "./NavItem";
+import MobileMenu from "./MobileMenu";
+
 import { NAVIGATION } from "@/lib/navigation";
-import useActiveSection from "@/hooks/useActiveSection";
+
 export default function Navbar() {
-  const active = useActiveSection(); 
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="fixed top-6 left-0 right-0 z-50">
-      <Container>
-        <nav className="flex items-center justify-between rounded-2xl border border-white/10 bg-zinc-900/70 px-6 py-4 backdrop-blur-xl">
-
-  {/* Left side */}
-  <div className="flex items-center gap-4">
-    {/* Mobile Menu Button */}
-    <button
-      onClick={() => setOpen(!open)}
-      className="md:hidden"
-      aria-label={open ? "Close menu" : "Open menu"}
-    >
-      {open ? <X size={24} /> : <Menu size={24} />}
-    </button>
-
-    {/* Logo */}
-    <Link
-      href="/"
-      className="text-lg font-bold tracking-wide"
-    >
-      APEX WEB
-    </Link>
-  </div>
-
-  {/* Desktop Navigation */}
-  <div className="hidden items-center gap-2 md:flex">
-    {NAVIGATION.map((item) => (
-      <a
-        key={item.id}
-        href={item.href}
-        className={`relative rounded-lg px-4 py-2 text-sm font-medium transition ${
-          active === item.id
-            ? "text-white"
-            : "text-zinc-400 hover:text-white"
-        }`}
+    <>
+      <motion.header
+        initial={false}
+        animate={{
+          y: 0,
+        }}
+        className="fixed inset-x-0 top-0 z-50"
       >
-        {active === item.id && (
-          <motion.span
-            layoutId="active-pill"
-            className="absolute inset-0 -z-10 rounded-lg bg-white/10"
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 30,
-            }}
-          />
-        )}
-        {item.label}
-      </a>
-    ))}
-  </div>
-
-  {/* Desktop Resume Button */}
-  <a
-    href="/resume/resume.pdf"
-    target="_blank"
-    className="hidden rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-500 md:inline-flex"
-  >
-    Resume
-  </a>
-
-</nav>
-        <AnimatePresence>
-  {open && (
-    <motion.div
-      initial={{ opacity: 0, y: -12 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -12 }}
-      transition={{ duration: 0.2 }}
-      className="mt-3 rounded-2xl border border-white/10 bg-zinc-900/90 p-6 backdrop-blur-xl md:hidden"
-    >
-      <div className="flex flex-col gap-4">
-        {NAVIGATION.map((item) => (
-          <a
-            key={item.id}
-            href={item.href}
-            onClick={() => setOpen(false)}
-            className={`rounded-lg px-3 py-2 transition ${
-              active === item.id
-                ? "bg-white/10 text-white"
-                : "text-zinc-400 hover:bg-white/5 hover:text-white"
-            }`}
+        <Container className="pt-4">
+          <nav
+            className={`flex items-center justify-between rounded-2xl border transition-all duration-300 ${
+              scrolled
+                ? "border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-xl"
+                : "border-transparent bg-transparent"
+            } px-6 py-4`}
           >
-            {item.label}
-          </a>
-        ))}
+            {/* Logo */}
+            <Logo />
 
-        <a
-          href="/resume/resume.pdf"
-          target="_blank"
-          onClick={() => setOpen(false)}
-          className="mt-2 rounded-lg bg-blue-600 px-4 py-3 text-center font-semibold text-white transition hover:bg-blue-500"
-        >
-          Resume
-        </a>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
-      </Container>
-    </header>
+            {/* Desktop Navigation */}
+            <div className="hidden items-center gap-7 lg:flex">
+              {NAVIGATION.map((item) => (
+                <NavItem
+                  key={item.id}
+                  name={item.name}
+                  href={item.href}
+                />
+              ))}
+            </div>
+
+            {/* Right Side */}
+            <div className="flex items-center gap-3">
+              <Button
+                asChild
+                className="hidden lg:inline-flex"
+              >
+                <Link href="/resume">
+                  Download Resume
+                </Link>
+              </Button>
+
+              <button
+                aria-label="Open menu"
+                onClick={() => setMobileOpen(true)}
+                className="rounded-xl p-2 text-slate-300 transition hover:bg-white/10 hover:text-white lg:hidden"
+              >
+                <Menu size={24} />
+              </button>
+            </div>
+          </nav>
+        </Container>
+      </motion.header>
+
+      <MobileMenu
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+      />
+    </>
   );
 }

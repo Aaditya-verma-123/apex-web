@@ -1,8 +1,47 @@
 export const NAVIGATION = [
-  { id: "home", label: "Home", href: "#home" },
-  { id: "about", label: "About", href: "#about" },
-  { id: "projects", label: "Projects", href: "#projects" },
-  { id: "skills", label: "Skills", href: "#skills" },
-  {id: "journey",label: "Journey",href: "#journey",},
-  {id: "contact",label: "Contact",href: "#contact",},
+  {
+    id: "home",
+    name: "Home",
+    href: "/",
+  },
+  {
+    id: "about",
+    name: "About",
+    href: "/about",
+  },
+  {
+    id: "projects",
+    name: "Projects",
+    href: "/projects",
+  },
+  {
+    id: "skills",
+    name: "Skills",
+    href: "/skills",
+  },
+  {
+    id: "journey",
+    name: "Journey",
+    href: "/journey",
+  },
+  {
+    id: "certificates",
+    name: "Certificates",
+    href: "/certificates",
+  },
+  {
+    id: "resume",
+    name: "Resume",
+    href: "/resume",
+  },
+  {
+    id: "dashboard",
+    name: "Dashboard",
+    href: "/dashboard",
+  },
+  {
+    id: "contact",
+    name: "Contact",
+    href: "/contact",
+  },
 ];
