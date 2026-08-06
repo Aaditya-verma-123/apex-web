@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FolderGit2, ArrowUpRight } from "lucide-react";
+import { Eye, ArrowUpRight } from "lucide-react";
 
 import type { Project } from "@/data/projects";
 
@@ -14,7 +14,9 @@ type ProjectCardProps = {
   project: Project;
 };
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({
+  project,
+}: ProjectCardProps) {
   const badgeVariant =
     project.status === "Completed"
       ? "success"
@@ -67,12 +69,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Description */}
         <p className="flex-1 text-[15px] leading-7 text-slate-400">
-          {project.description}
+          {project.shortDescription}
         </p>
 
         {/* Tech Stack */}
         <div className="mt-8 flex flex-wrap gap-2">
-          {project.tech.map((tech) => (
+          {project.technologies.map((tech) => (
             <Badge
               key={tech}
               variant="outline"
@@ -97,13 +99,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           asChild
           className="w-full justify-center gap-2"
         >
-          <Link
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FolderGit2 className="h-4 w-4" />
-            View Source
+          <Link href={`/projects/${project.slug}`}>
+            <Eye className="h-4 w-4" />
+
+            View Case Study
+
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </Button>
