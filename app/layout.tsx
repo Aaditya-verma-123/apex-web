@@ -3,6 +3,11 @@ import "./globals.css";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CommandPalette from "@/components/command/CommandPalette";
+import ThemeSwitcher from "@/components/theme/ThemeSwitcher";
+import ScrollProgress from "@/components/effects/ScrollProgress";
+import PageTransition from "@/components/providers/PageTransition";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 
 import { Toaster } from "sonner";
 
@@ -23,11 +28,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ThemeProvider>
+        <ScrollProgress />
+        <CommandPalette />
+        <PageTransition>
         <Navbar />
 
-        <main className="min-h-screen">
-          {children}
-        </main>
+          <main className="min-h-screen">
+            {children}
+          </main>
+        </PageTransition>
 
         <Footer />
 
@@ -37,6 +47,8 @@ export default function RootLayout({
           closeButton
           duration={2500}
         />
+        <ThemeSwitcher />
+        </ThemeProvider>
       </body>
     </html>
   );

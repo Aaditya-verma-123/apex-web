@@ -1,34 +1,35 @@
 "use client";
 
-import { useCertificate } from "@/context/CertificateContext";
+import { certificates } from "@/data/certificates";
 
 import CertificateCard from "./CertificateCard";
-import CertificateModal from "./CertificateModal";
 
 export default function CertificateGrid() {
-  const { certificates } = useCertificate();
+  const featured = certificates.find(
+    (certificate) => certificate.featured
+  );
 
-  const [featured, ...others] = certificates;
+  const others = certificates.filter(
+    (certificate) => !certificate.featured
+  );
 
   return (
-    <>
-      <div className="mt-16 space-y-10">
+    <div className="mt-16 space-y-10">
+      {featured && (
         <CertificateCard
           featured
           certificate={featured}
         />
+      )}
 
-        <div className="grid gap-8 md:grid-cols-2">
-          {others.map((certificate) => (
-            <CertificateCard
-              key={certificate.id}
-              certificate={certificate}
-            />
-          ))}
-        </div>
+      <div className="grid gap-8 md:grid-cols-2">
+        {others.map((certificate) => (
+          <CertificateCard
+            key={certificate.id}
+            certificate={certificate}
+          />
+        ))}
       </div>
-
-      <CertificateModal />
-    </>
+    </div>
   );
 }

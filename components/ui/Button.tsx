@@ -23,16 +23,39 @@ interface ButtonProps
 
 const variants = {
   primary:
-    "bg-blue-600 text-white hover:bg-blue-500",
+    `
+      bg-[var(--primary)]
+      text-white
+      hover:bg-[var(--primary-hover)]
+      shadow-[0_0_30px_var(--glow)]
+    `,
 
   secondary:
-    "bg-white/10 text-white hover:bg-white/20",
+    `
+      bg-white/10
+      text-white
+      border
+      border-white/10
+      hover:border-[var(--border)]
+      hover:bg-white/15
+    `,
 
   outline:
-    "border border-blue-500/40 bg-transparent text-blue-400 hover:bg-blue-500/10",
+    `
+      border
+      border-[var(--border)]
+      bg-transparent
+      text-[var(--primary)]
+      hover:bg-[color:var(--glow)]
+    `,
 
   ghost:
-    "bg-transparent text-slate-300 hover:bg-white/10 hover:text-white",
+    `
+      bg-transparent
+      text-slate-300
+      hover:bg-white/10
+      hover:text-[var(--primary)]
+    `,
 };
 
 const sizes = {
@@ -53,10 +76,24 @@ export default function Button({
   return (
     <Comp
       className={cn(
-        "inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-300",
-        "focus:outline-none focus:ring-2 focus:ring-blue-500/40",
-        "disabled:pointer-events-none disabled:opacity-50",
-        "active:scale-95",
+        `
+        inline-flex
+        items-center
+        justify-center
+        rounded-xl
+        font-semibold
+        transition-all
+        duration-300
+
+        focus:outline-none
+        focus:ring-2
+        focus:ring-[var(--border)]
+
+        disabled:pointer-events-none
+        disabled:opacity-50
+
+        active:scale-95
+        `,
         variants[variant],
         sizes[size],
         className

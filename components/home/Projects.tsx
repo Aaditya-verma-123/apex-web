@@ -5,6 +5,7 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import ProjectCard from "@/components/ui/ProjectCard";
 
 import { PROJECTS } from "@/lib/data";
+import { projects } from "@/data/projects";
 
 export default function Projects() {
   return (
@@ -17,17 +18,12 @@ export default function Projects() {
         />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
-  {PROJECTS.map((project) => (
-    <ProjectCard
-      key={project.title}
-      title={project.title}
-      description={project.description}
-      technologies={project.technologies}
-      image={project.image}
-      github={project.github}
-      live={project.live}
-    />
-  ))}
+  {projects.map((project) => (
+  <ProjectCard
+    key={project.id}
+    project={project}
+  />
+))}
 </div>
       </Container>
     </section>

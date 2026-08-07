@@ -1,39 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { FadeUp } from "@/components/animations";
 
 import HeroBackground from "./HeroBackground";
 import HeroStats from "./HeroStats";
 import ScrollIndicator from "./ScrollIndicator";
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: {
-    opacity: 0,
-    y: 24,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-};
 
 export default function Hero() {
   return (
@@ -41,80 +16,64 @@ export default function Hero() {
       <HeroBackground />
 
       <Container>
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="mx-auto max-w-5xl text-center"
-        >
-          {/* Greeting */}
-          <motion.p
-            variants={itemVariants}
-            className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-cyan-400"
-          >
-            Hi, I'm
-          </motion.p>
+        <div className="mx-auto max-w-5xl text-center">
 
-          {/* Name */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
-          >
-            Aaditya Verma
-          </motion.h1>
+          <FadeUp>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-cyan-400">
+              Hi, I'm
+            </p>
+          </FadeUp>
 
-          {/* Subtitle */}
-          <motion.h2
-            variants={itemVariants}
-            className="mt-6 text-xl font-medium text-zinc-300 md:text-2xl"
-          >
-            Developer • Cybersecurity Learner • Future AI Engineer
-          </motion.h2>
+          <FadeUp delay={0.08}>
+            <h1 className="text-5xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+              Aaditya Verma
+            </h1>
+          </FadeUp>
 
-          {/* Description */}
-          <motion.p
-            variants={itemVariants}
-            className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-zinc-400 md:text-xl"
-          >
-            Building modern web applications, exploring cybersecurity, and
-            creating AI-powered solutions that solve real-world problems.
-          </motion.p>
+          <FadeUp delay={0.16}>
+            <h2 className="mt-6 text-xl font-medium text-zinc-300 md:text-2xl">
+              Developer • Cybersecurity Learner • Future AI Engineer
+            </h2>
+          </FadeUp>
 
-          {/* CTA Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-12 flex flex-wrap justify-center gap-5"
-          >
-            <Button>
-              View Projects
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+          <FadeUp delay={0.24}>
+            <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-zinc-400 md:text-xl">
+              Building modern web applications, exploring cybersecurity, and
+              creating AI-powered solutions that solve real-world problems.
+            </p>
+          </FadeUp>
 
-            <Button variant="secondary" asChild>
-              <a
-                href="/resume/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Download Resume
-              </a>
-            </Button>
-          </motion.div>
+          <FadeUp delay={0.32}>
+            <div className="mt-12 flex flex-wrap justify-center gap-5">
+              <Button>
+                View Projects
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
 
-          {/* Stats */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-20"
-          >
-            <HeroStats />
-          </motion.div>
+              <Button variant="secondary" asChild>
+                <a
+                  href="/resume/Aaditya_Verma_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Resume
+                </a>
+              </Button>
+            </div>
+          </FadeUp>
 
-          {/* Scroll Indicator */}
-          <motion.div variants={itemVariants}>
+          <FadeUp delay={0.40}>
+            <div className="mt-20">
+              <HeroStats />
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.48}>
             <ScrollIndicator />
-          </motion.div>
-        </motion.div>
+          </FadeUp>
+
+        </div>
       </Container>
     </section>
   );

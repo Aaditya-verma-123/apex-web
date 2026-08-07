@@ -113,5 +113,5 @@ export const CONTACT = {
   github: "https://github.com/Aaditya-verma-123",
   linkedin: "https://linkedin.com/in/aaditya-verma-985117317",
   instagram: "https://instagram.com/___aaditya_verma___",
-  discord: "aadityaverma0373",
+  discord: "aadityaverma8",
 };

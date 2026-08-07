@@ -13,7 +13,21 @@ export default function GlassCard({
   return (
     <Card
       className={cn(
-        "bg-white/5 backdrop-blur-xl border-white/10 shadow-xl",
+        `
+        border
+        border-white/10
+
+        bg-white/5
+        backdrop-blur-xl
+
+        shadow-xl
+
+        transition-all
+        duration-300
+
+        hover:border-[var(--border)]
+        hover:shadow-[0_20px_60px_var(--glow)]
+        `,
         className
       )}
     >
