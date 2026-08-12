@@ -2,12 +2,24 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+
 import CommandPalette from "@/components/command/CommandPalette";
-import ThemeSwitcher from "@/components/theme/ThemeSwitcher";
-import ScrollProgress from "@/components/effects/ScrollProgress";
+
+import BootScreen from "@/components/boot/BootScreen";
+
+import ScrollProgress from "@/components/launch/ScrollProgress";
+
+
+import Footer from "@/components/launch/Footer";
+
 import PageTransition from "@/components/providers/PageTransition";
+
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import ThemeMenu from "@/components/theme/ThemeMenu";
+
+import { AIProvider } from "@/context/AIContext";
+import AIButton from "@/components/ai/AIButton";
+import AIWindow from "@/components/ai/AIWindow";
 
 import { Toaster } from "sonner";
 
@@ -17,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | APEX WEB",
   },
   description:
-    "Official portfolio of Aaditya Verma — Developer, Cybersecurity Learner, and AI Enthusiast.",
+  "Official portfolio of Aaditya Verma — Developer, Cybersecurity Learner, and AI Enthusiast.",
 };
 
 export default function RootLayout({
@@ -29,25 +41,35 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider>
-        <ScrollProgress />
-        <CommandPalette />
-        <PageTransition>
-        <Navbar />
+          <AIProvider>
+            {/* Global Effects */}
+            <BootScreen />
+            <ScrollProgress />            
 
-          <main className="min-h-screen">
-            {children}
-          </main>
-        </PageTransition>
+            {/* Layout */}
+            <Navbar />
+            <PageTransition>
+              <main className="min-h-screen">
+                {children}
+              </main>
+            </PageTransition>
 
-        <Footer />
+            <Footer />
 
-        <Toaster
-          position="top-right"
-          richColors
-          closeButton
-          duration={2500}
-        />
-        <ThemeSwitcher />
+            {/* Global UI */}
+            <CommandPalette />
+
+            <Toaster
+              position="top-right"
+              richColors
+              closeButton
+              duration={2500}
+            />
+
+            <ThemeMenu />
+            <AIButton />
+            <AIWindow />
+          </AIProvider>
         </ThemeProvider>
       </body>
     </html>

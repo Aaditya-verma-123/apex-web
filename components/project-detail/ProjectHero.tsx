@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import ProjectStats from "./ProjectStats";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -27,23 +26,29 @@ export default function ProjectHero({
     project.status === "Completed"
       ? "success"
       : project.status === "In Progress"
-      ? "warning"
-      : "info";
+        ? "warning"
+        : "info";
 
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-20 sm:py-24">
+      {/* Background Glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-cyan-500/5 blur-[140px]"
+      />
+
       <Container>
-        {/* Back Button */}
+        {/* Back Navigation */}
         <Link
-          href="/#projects"
-          className="mb-10 inline-flex items-center gap-2 text-slate-400 transition hover:text-white"
+          href="/projects"
+          className="relative z-10 inline-flex items-center gap-2 text-sm font-medium text-slate-400 transition-colors hover:text-cyan-400"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Projects
         </Link>
 
-        <div className="grid items-center gap-16 lg:grid-cols-2">
-          {/* Left Side */}
+        <div className="relative z-10 mt-12 grid items-center gap-16 lg:grid-cols-2">
+          {/* Project Information */}
           <motion.div
             initial={{
               opacity: 0,
@@ -61,45 +66,42 @@ export default function ProjectHero({
               {project.status}
             </Badge>
 
-            <h1 className="mt-6 text-5xl font-bold tracking-tight text-white">
+            <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {project.title}
             </h1>
 
-            <p className="mt-6 text-lg leading-8 text-slate-400">
+            <p className="mt-6 text-base leading-8 text-slate-400 sm:text-lg">
               {project.longDescription}
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
               <Button asChild>
-                <Link
+                <a
                   href={project.github}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FolderGit2 className="mr-2 h-4 w-4" />
                   GitHub
-                </Link>
+                </a>
               </Button>
 
               {project.live && (
-                <Button
-                  variant="secondary"
-                  asChild
-                >
-                  <Link
+                <Button variant="secondary" asChild>
+                  <a
                     href={project.live}
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Live Demo
-
                     <ArrowUpRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  </a>
                 </Button>
-)}
-              <ProjectStats project={project} />
+              )}
             </div>
           </motion.div>
 
-          {/* Right Side */}
+          {/* Project Image */}
           <motion.div
             initial={{
               opacity: 0,
@@ -119,10 +121,11 @@ export default function ProjectHero({
               <div className="relative aspect-[16/10]">
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} project preview`}
                   fill
                   priority
-                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-500 hover:scale-[1.02]"
                 />
               </div>
             </div>

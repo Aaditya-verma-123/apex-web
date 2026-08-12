@@ -4,15 +4,14 @@ import { motion } from "framer-motion";
 
 export default function HeroBackground() {
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+    >
       {/* Animated Gradient */}
       <motion.div
         animate={{
-          backgroundPosition: [
-            "0% 50%",
-            "100% 50%",
-            "0% 50%",
-          ],
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
         }}
         transition={{
           duration: 18,
@@ -75,6 +74,9 @@ export default function HeroBackground() {
         }}
         className="absolute bottom-[-120px] left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-sky-500/10 blur-[150px]"
       />
+
+      {/* Bottom Fade */}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent" />
     </div>
   );
 }

@@ -16,6 +16,7 @@ export default function MobileMenu({
   open,
   onClose,
 }: MobileMenuProps) {
+  
   return (
     <AnimatePresence>
       {open && (
@@ -26,7 +27,7 @@ export default function MobileMenu({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm x1:hidden"
             onClick={onClose}
           />
 
@@ -40,7 +41,7 @@ export default function MobileMenu({
               stiffness: 320,
               damping: 30,
             }}
-            className="fixed right-0 top-0 z-50 flex h-screen w-[320px] flex-col border-l border-white/10 bg-slate-950 px-6 py-6 md:hidden"
+            className="fixed right-0 top-0 z-50 flex h-screen w-[320px] flex-col border-l border-white/10 bg-slate-950 px-6 py-6 x1:hidden"
           >
             <div className="mb-10 flex items-center justify-between">
               <h2 className="text-lg font-bold text-white">

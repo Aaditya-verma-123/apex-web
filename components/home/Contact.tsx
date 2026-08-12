@@ -1,19 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Copy, Download } from "lucide-react";
 import {
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
+  Copy,
+  Download,
+  Mail,
+  MessageCircle,
+  Send,
+} from "lucide-react";
+import {
   FaDiscord,
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
 } from "react-icons/fa6";
 import { toast } from "sonner";
 
 import Container from "@/components/ui/Container";
-import SectionTitle from "@/components/ui/SectionTitle";
 import ContactCard from "@/components/ui/ContactCard";
 import Button from "@/components/ui/Button";
+import GlassCard from "@/components/ui/GlassCard";
 
 import { CONTACT } from "@/lib/data";
 
@@ -22,6 +28,7 @@ const cards = [
     icon: Mail,
     title: "Email",
     value: CONTACT.email,
+    href: `mailto:${CONTACT.email}`,
   },
   {
     icon: FaGithub,
@@ -59,74 +66,137 @@ export default function ContactCTA() {
   }
 
   return (
-    <section
-      id="contact"
-      className="relative scroll-mt-32 py-28"
-    >
+    <main className="relative overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute left-1/2 top-1/2 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[140px]" />
-      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-cyan-500/5 blur-[140px]"
+      />
 
-      <Container>
-        <SectionTitle
-          eyebrow="CONTACT"
-          title="Let's Connect"
-          description="Whether you have a project, collaboration, or simply want to say hello, I'd love to hear from you."
-        />
+      <section className="relative py-24 pt-36">
+        <Container>
+          {/* Hero */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            <div className="flex items-center gap-3">
+              <MessageCircle className="h-5 w-5 text-cyan-400" />
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {cards.map((card, index) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.08,
-              }}
-            >
-              <ContactCard {...card} />
-            </motion.div>
-          ))}
-        </div>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">
+                Contact
+              </p>
+            </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 flex flex-wrap justify-center gap-4"
-        >
-          <Button onClick={copyEmail}>
-            <Copy className="mr-2 h-4 w-4" />
-            Copy Email
-          </Button>
+            <h1 className="mt-5 text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
+              Let&apos;s
+              <span className="text-cyan-400">
+                {" "}Connect.
+              </span>
+            </h1>
 
-          <Button variant="secondary" asChild>
-            <a
-              href="/resume/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Download Resume
-            </a>
-          </Button>
-        </motion.div>
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-400">
+              Have a project, idea, collaboration, or simply want to
+              say hello? Feel free to reach out through any of the
+              platforms below.
+            </p>
+          </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="mx-auto mt-10 max-w-2xl text-center text-sm text-zinc-500"
-        >
-          Looking forward to connecting, collaborating, and building meaningful
-          technology together.
-        </motion.p>
-      </Container>
-    </section>
+          {/* Contact Cards */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.08,
+                },
+              },
+            }}
+            className="relative z-10 mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {cards.map((card) => (
+              <motion.div
+                key={card.title}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 25,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                  },
+                }}
+              >
+                <ContactCard {...card} />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Quick Actions */}
+          <GlassCard className="relative mt-10 overflow-hidden p-8 sm:p-10">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute right-0 top-0 h-40 w-40 rounded-full bg-cyan-500/10 blur-[80px]"
+            />
+
+            <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-400">
+                  Quick Actions
+                </p>
+
+                <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl">
+                  Want to get in touch?
+                </h2>
+
+                <p className="mt-3 max-w-2xl leading-7 text-slate-400">
+                  Copy my email or take a look at my resume before
+                  reaching out.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <Button onClick={copyEmail}>
+                  <Copy className="mr-2 h-4 w-4" />
+                  Copy Email
+                </Button>
+
+                <Button variant="secondary" asChild>
+                  <a
+                    href="/resume/Aaditya_Verma_Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    View Resume
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </GlassCard>
+
+          {/* Closing */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto mt-16 max-w-2xl text-center"
+          >
+            <Send className="mx-auto h-7 w-7 text-cyan-400" />
+
+            <p className="mt-5 text-sm leading-7 text-slate-500">
+              Always open to learning, collaborating, and building
+              meaningful technology.
+            </p>
+          </motion.div>
+        </Container>
+      </section>
+    </main>
   );
 }

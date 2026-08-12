@@ -1,31 +1,27 @@
 "use client";
 
 import Container from "@/components/ui/Container";
-import SectionTitle from "@/components/ui/SectionTitle";
-
 import ResumeHero from "./ResumeHero";
 import ResumeActions from "./ResumeActions";
 import ResumeViewer from "./ResumeViewer";
 
 export default function Resume() {
   return (
-    <section
-      id="resume"
-      className="py-28"
-    >
-      <Container>
-        <SectionTitle
-          eyebrow="Professional"
-          title="Resume"
-          description="A complete overview of my education, technical skills, certifications, and projects."
-        />
+    <main className="relative overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-cyan-500/5 blur-[140px]"
+      />
 
-        <div className="mt-14">
+      <section className="relative py-24 pt-36">
+        <Container>
           <ResumeHero />
+
           <ResumeActions />
+
           <ResumeViewer />
-        </div>
-      </Container>
-    </section>
+        </Container>
+      </section>
+    </main>
   );
 }

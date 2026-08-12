@@ -1,26 +1,41 @@
 "use client";
 
-import { FileText, Award, FolderKanban, Calendar } from "lucide-react";
+import {
+  Award,
+  Calendar,
+  FileText,
+  FolderKanban,
+} from "lucide-react";
 
 import { resume } from "@/data/resume";
 import GlassCard from "@/components/ui/GlassCard";
+import { FadeUp } from "@/components/animations";
 
 export default function ResumeHero() {
   return (
-    <GlassCard className="rounded-3xl border border-white/10 p-8">
-      <span className="text-sm font-semibold uppercase tracking-widest text-blue-400">
-        Resume
-      </span>
+    <FadeUp>
+      <div className="max-w-4xl">
+        <div className="flex items-center gap-3">
+          <FileText className="h-5 w-5 text-cyan-400" />
 
-      <h2 className="mt-3 text-4xl font-bold text-white">
-        {resume.title}
-      </h2>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">
+            Resume
+          </p>
+        </div>
 
-      <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-400">
-        {resume.description}
-      </p>
+        <h1 className="mt-5 text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
+          My
+          <span className="text-cyan-400">
+            {" "}Resume.
+          </span>
+        </h1>
 
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-400">
+          {resume.description}
+        </p>
+      </div>
+
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <Stat
           icon={<FileText className="h-5 w-5" />}
           label="Pages"
@@ -45,7 +60,7 @@ export default function ResumeHero() {
           value={resume.updated}
         />
       </div>
-    </GlassCard>
+    </FadeUp>
   );
 }
 
@@ -61,16 +76,18 @@ function Stat({
   value,
 }: StatProps) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-      <div className="mb-3 text-blue-400">{icon}</div>
+    <GlassCard className="group p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30">
+      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-400 transition-transform duration-300 group-hover:scale-110">
+        {icon}
+      </div>
 
-      <p className="text-2xl font-bold text-white">
+      <p className="mt-5 text-2xl font-bold text-white">
         {value}
       </p>
 
-      <p className="mt-1 text-sm text-slate-400">
+      <p className="mt-1 text-sm text-slate-500">
         {label}
       </p>
-    </div>
+    </GlassCard>
   );
 }

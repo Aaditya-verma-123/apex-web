@@ -5,8 +5,8 @@ export const HERO = {
   description:
     "Building modern web applications, exploring cybersecurity, and creating AI-powered solutions.",
   stats: {
-    projects: "8+",
-    certificates: "5+",
+    projects: "3+",
+    certificates: "6+",
     technologies: "20+",
   },
 };

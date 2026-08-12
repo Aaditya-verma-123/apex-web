@@ -21,7 +21,7 @@ export default async function CertificatePage({
   const { slug } = await params;
 
   const certificate = certificates.find(
-    (c) => c.slug === slug
+    (item) => item.slug === slug
   );
 
   if (!certificate) {
@@ -29,7 +29,7 @@ export default async function CertificatePage({
   }
 
   return (
-    <>
+    <main className="relative overflow-hidden">
       <CertificateHero certificate={certificate} />
 
       <CertificatePreview certificate={certificate} />
@@ -40,7 +40,9 @@ export default async function CertificatePage({
 
       <CertificateActions certificate={certificate} />
 
-      <RelatedCertificates currentCertificate={certificate} />
-    </>
+      <RelatedCertificates
+        currentCertificate={certificate}
+      />
+    </main>
   );
 }

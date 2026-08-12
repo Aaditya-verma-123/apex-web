@@ -25,17 +25,18 @@ export function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] =
-    useState<ThemeName>("cyan");
+  const [theme, setTheme] = useState<ThemeName>(() => {
+  if (typeof window === "undefined") {
+    return "cyan";
+  }
 
-  useEffect(() => {
-    const saved =
-      localStorage.getItem("theme") as ThemeName;
+  const saved =
+    localStorage.getItem("theme") as ThemeName;
 
-    if (saved && themes[saved]) {
-      setTheme(saved);
-    }
-  }, []);
+  return saved && themes[saved]
+    ? saved
+    : "cyan";
+});
 
   useEffect(() => {
     const colors = themes[theme];

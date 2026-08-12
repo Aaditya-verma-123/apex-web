@@ -193,4 +193,40 @@ export const certificates: Certificate[] = [
 
     status: "Completed",
   },
+
+  {
+  id: 6,
+  slug: "sound-the-alarm-detection-and-response",
+
+  title: "Sound the Alarm: Detection and Response",
+  issuer: "Google",
+
+  description:
+    "Developed core security operations skills including incident response, SIEM investigation, network packet analysis, and intrusion detection. Learned how to contain, eradicate, and recover from cybersecurity attacks.",
+
+  image: "/images/certificates/sound-the-alarm.webp",
+  pdf: "/images/certificates/sound-the-alarm-detection-and-response.pdf",
+
+  issued: "8 August 2026",
+
+  credentialId: "Y9S4OY7TU2X3",
+
+  verificationUrl:
+    "https://coursera.org/verify/Y9S4OY7TU2X3",
+
+  skills: [
+    "Incident Response",
+    "SIEM",
+    "Network Packet Analysis",
+    "Intrusion Detection Systems",
+    "Threat Detection",
+    "Security Operations",
+  ],
+
+  category: "Cybersecurity",
+
+  featured: false,
+
+  status: "Completed",
+},
 ];

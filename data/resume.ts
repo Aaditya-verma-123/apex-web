@@ -15,6 +15,6 @@ export const resume: ResumeData = {
   updated: "August 2026",
   pages: 1,
   projects: 3,
-  certifications: 5,
+  certifications:6,
   pdf: "/resume/Aaditya_Verma_Resume.pdf",
 };

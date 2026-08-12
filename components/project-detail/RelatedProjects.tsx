@@ -14,17 +14,22 @@ interface Props {
 export default function RelatedProjects({
   currentProject,
 }: Props) {
-  const relatedProjects = projects.filter(
-    (project) => project.id !== currentProject.id
-  );
+  const relatedProjects = projects
+    .filter((project) => project.id !== currentProject.id)
+    .slice(0, 3);
 
   return (
-    <section className="py-24">
+    <section className="relative py-20">
       <Container>
-        <div className="mb-12">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-400">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-400">
             Continue Exploring
-          </span>
+          </p>
 
           <h2 className="mt-4 text-4xl font-bold text-white">
             Related Projects
@@ -34,13 +39,14 @@ export default function RelatedProjects({
             Discover more projects built using modern technologies and
             different approaches.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid gap-8 md:grid-cols-2"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3"
         >
           {relatedProjects.map((project) => (
             <ProjectCard

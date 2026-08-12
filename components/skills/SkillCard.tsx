@@ -34,47 +34,24 @@ export default function SkillCard({
     >
       <GlassCard
         className="
-          group
-          flex
-          h-full
-          flex-col
-          rounded-3xl
-          border
-          border-white/10
-          p-8
-          transition-all
-          duration-300
-          hover:border-blue-500/40
+          group h-full
+          transition-all duration-300
+          hover:border-cyan-400/30
           hover:bg-white/[0.07]
-          hover:shadow-[0_20px_60px_rgba(59,130,246,0.15)]
+          hover:shadow-[0_20px_60px_rgba(34,211,238,0.08)]
         "
       >
         {/* Header */}
-        <div className="mb-8 flex items-center gap-4">
-          <div
-            className="
-              flex
-              h-14
-              w-14
-              items-center
-              justify-center
-              rounded-2xl
-              border
-              border-blue-500/20
-              bg-blue-500/10
-              text-blue-400
-              transition-all
-              duration-300
-              group-hover:scale-110
-              group-hover:border-blue-400/40
-              group-hover:bg-blue-500/15
-            "
-          >
-            <Icon className="h-7 w-7" />
+        <div className="mb-7 flex items-start gap-4">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/10">
+            <Icon
+              aria-hidden="true"
+              className="h-6 w-6 text-cyan-400"
+            />
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-white transition-colors duration-300 group-hover:text-blue-300">
+            <h3 className="text-xl font-bold text-white transition-colors duration-300 group-hover:text-cyan-300">
               {category.title}
             </h3>
 

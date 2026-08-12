@@ -20,12 +20,12 @@ const statusStyles = {
     label: "Completed",
   },
   current: {
-    dot: "bg-blue-500 border-blue-400",
-    icon: "text-blue-400",
-    badge:
-      "border-blue-500/30 bg-blue-500/10 text-blue-300",
-    label: "Current",
-  },
+  dot: "bg-cyan-500 border-cyan-400",
+  icon: "text-cyan-400",
+  badge:
+    "border-cyan-500/30 bg-cyan-500/10 text-cyan-300",
+  label: "Current",
+},
   future: {
     dot: "bg-violet-500 border-violet-400",
     icon: "text-violet-400",
@@ -40,9 +40,52 @@ export default function TimelineItem({
   index,
 }: TimelineItemProps) {
   const Icon = item.icon;
-  console.log(item.title, Icon);
   const status = statusStyles[item.status];
   const isLeft = index % 2 === 0;
+
+  const CardContent = (
+    <GlassCard
+      className="
+        rounded-3xl
+        border border-white/10
+        p-6
+        transition-all duration-300
+        hover:border-cyan-400/30
+        hover:bg-white/[0.07]
+        hover:shadow-[0_20px_60px_rgba(34,211,238,0.08)]
+      "
+    >
+      <div className="mb-4 flex items-center justify-between gap-4">
+        <span className="text-sm font-semibold text-slate-400">
+          {item.year}
+        </span>
+
+        <span
+          className={cn(
+            "rounded-full border px-3 py-1 text-xs font-medium",
+            status.badge
+          )}
+        >
+          {status.label}
+        </span>
+      </div>
+
+      <div className="mb-4 flex items-center gap-3">
+        <Icon
+          aria-hidden="true"
+          className={cn("h-6 w-6 shrink-0", status.icon)}
+        />
+
+        <h3 className="text-xl font-bold text-white">
+          {item.title}
+        </h3>
+      </div>
+
+      <p className="leading-7 text-slate-400">
+        {item.description}
+      </p>
+    </GlassCard>
+  );
 
   return (
     <motion.div
@@ -55,53 +98,13 @@ export default function TimelineItem({
       }}
       className="relative"
     >
-      <div className="grid grid-cols-1 items-center md:grid-cols-[1fr_auto_1fr]">
-        {/* Left Card */}
-        <div
-          className={cn(
-            "hidden md:block",
-            isLeft ? "" : "invisible"
-          )}
-        >
-          {isLeft && (
-            <GlassCard className="rounded-3xl border border-white/10 p-6 transition-all duration-300 hover:border-blue-500/40 hover:bg-white/[0.07] hover:shadow-[0_20px_60px_rgba(59,130,246,0.15)]">
-              <div className="mb-4 flex items-center justify-between">
-                <span className="text-sm font-semibold text-slate-400">
-                  {item.year}
-                </span>
-
-                <span
-                  className={cn(
-                    "rounded-full border px-3 py-1 text-xs font-medium",
-                    status.badge
-                  )}
-                >
-                  {status.label}
-                </span>
-              </div>
-
-              <div className="mb-4 flex items-center gap-3">
-                <Icon
-                  className={cn(
-                    "h-6 w-6",
-                    status.icon
-                  )}
-                />
-
-                <h3 className="text-xl font-bold text-white">
-                  {item.title}
-                </h3>
-              </div>
-
-              <p className="leading-7 text-slate-400">
-                {item.description}
-              </p>
-            </GlassCard>
-          )}
+      {/* Desktop Timeline */}
+      <div className="hidden items-stretch gap-8 md:grid md:grid-cols-[1fr_auto_1fr]">
+        <div className={cn(!isLeft && "invisible")}>
+          {isLeft && CardContent}
         </div>
 
-        {/* Timeline */}
-        <div className="relative mx-auto flex flex-col items-center">
+        <div className="relative flex flex-col items-center">
           <div className="h-12 w-px bg-white/10" />
 
           <div
@@ -113,89 +116,26 @@ export default function TimelineItem({
             <div className="h-2 w-2 rounded-full bg-white" />
           </div>
 
-          <div className="h-12 w-px bg-white/10" />
+          <div className="h-12 w-px flex-1 bg-white/10" />
         </div>
 
-        {/* Right Card */}
+        <div className={cn(isLeft && "invisible")}>
+          {!isLeft && CardContent}
+        </div>
+      </div>
+
+      {/* Mobile Timeline */}
+      <div className="relative pl-10 md:hidden">
         <div
           className={cn(
-            "hidden md:block",
-            !isLeft ? "" : "invisible"
+            "absolute left-0 top-0 z-10 flex h-6 w-6 items-center justify-center rounded-full border-4 border-slate-950 shadow-lg",
+            status.dot
           )}
         >
-          {!isLeft && (
-            <GlassCard className="rounded-3xl border border-white/10 p-6 transition-all duration-300 hover:border-blue-500/40 hover:bg-white/[0.07] hover:shadow-[0_20px_60px_rgba(59,130,246,0.15)]">
-              <div className="mb-4 flex items-center justify-between">
-                <span className="text-sm font-semibold text-slate-400">
-                  {item.year}
-                </span>
-
-                <span
-                  className={cn(
-                    "rounded-full border px-3 py-1 text-xs font-medium",
-                    status.badge
-                  )}
-                >
-                  {status.label}
-                </span>
-              </div>
-
-              <div className="mb-4 flex items-center gap-3">
-                <Icon
-                  className={cn(
-                    "h-6 w-6",
-                    status.icon
-                  )}
-                />
-
-                <h3 className="text-xl font-bold text-white">
-                  {item.title}
-                </h3>
-              </div>
-
-              <p className="leading-7 text-slate-400">
-                {item.description}
-              </p>
-            </GlassCard>
-          )}
+          <div className="h-2 w-2 rounded-full bg-white" />
         </div>
 
-        {/* Mobile Card */}
-        <div className="mt-6 md:hidden">
-          <GlassCard className="rounded-3xl border border-white/10 p-6">
-            <div className="mb-4 flex items-center justify-between">
-              <span className="text-sm font-semibold text-slate-400">
-                {item.year}
-              </span>
-
-              <span
-                className={cn(
-                  "rounded-full border px-3 py-1 text-xs font-medium",
-                  status.badge
-                )}
-              >
-                {status.label}
-              </span>
-            </div>
-
-            <div className="mb-4 flex items-center gap-3">
-              <Icon
-                className={cn(
-                  "h-6 w-6",
-                  status.icon
-                )}
-              />
-
-              <h3 className="text-xl font-bold text-white">
-                {item.title}
-              </h3>
-            </div>
-
-            <p className="leading-7 text-slate-400">
-              {item.description}
-            </p>
-          </GlassCard>
-        </div>
+        {CardContent}
       </div>
     </motion.div>
   );

@@ -30,6 +30,11 @@ export const NAVIGATION = [
     href: "/certificates",
   },
   {
+    id: "blog",
+    name: "Blog",
+    href: "/blog",
+  },
+  {
     id: "resume",
     name: "Resume",
     href: "/resume",

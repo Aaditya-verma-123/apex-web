@@ -57,12 +57,12 @@ const items = [
 
 export default function CurrentlyBuilding() {
   return (
-    <section className="py-28">
+    <section className="py-24">
       <Container>
         <SectionTitle
           eyebrow="Currently Building"
-          title="What I'm Working On"
-          description="I'm continuously learning new technologies while building projects that improve my skills and solve real-world problems."
+          title="What I'm working on"
+          description="A look at the projects, learning, and ideas I'm actively developing."
         />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-3">
@@ -71,44 +71,62 @@ export default function CurrentlyBuilding() {
               key={item.title}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{
                 duration: 0.5,
                 delay: index * 0.1,
               }}
-              viewport={{ once: true }}
+              whileHover={{ y: -6 }}
+              className="h-full"
             >
-              <Card className="flex h-full flex-col">
-                <div className="flex items-center justify-between">
+              <Card
+                className="
+                  group
+                  flex h-full flex-col
+                  transition-all duration-300
+                  hover:border-cyan-400/30
+                  hover:bg-white/[0.07]
+                  hover:shadow-[0_20px_60px_rgba(34,211,238,0.08)]
+                "
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between gap-4">
                   <Badge variant={item.variant}>
                     <span className="mr-2 h-2 w-2 rounded-full bg-current" />
                     {item.status}
                   </Badge>
 
                   <ExternalLink
+                    aria-hidden="true"
                     size={18}
-                    className="text-slate-500"
+                    className="text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyan-400"
                   />
                 </div>
 
-                <h3 className="mt-6 text-2xl font-bold text-white">
+                {/* Title */}
+                <h3 className="mt-6 text-2xl font-bold text-white transition-colors duration-300 group-hover:text-cyan-300">
                   {item.title}
                 </h3>
 
+                {/* Description */}
                 <p className="mt-4 flex-grow leading-7 text-slate-400">
                   {item.description}
                 </p>
 
+                {/* Technologies */}
                 <div className="mt-8 flex flex-wrap gap-2">
                   {item.technologies.map((tech) => (
                     <Badge
                       key={tech}
                       variant="outline"
+                      className="transition-colors duration-300 group-hover:border-cyan-400/30"
                     >
                       {tech}
                     </Badge>
                   ))}
                 </div>
 
+                {/* CTA */}
                 <Button
                   asChild
                   variant="ghost"
@@ -116,7 +134,7 @@ export default function CurrentlyBuilding() {
                 >
                   <Link href={item.href}>
                     Learn More
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </Button>
               </Card>

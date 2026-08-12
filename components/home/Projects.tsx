@@ -4,7 +4,6 @@ import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 import ProjectCard from "@/components/ui/ProjectCard";
 
-import { PROJECTS } from "@/lib/data";
 import { projects } from "@/data/projects";
 
 export default function Projects() {

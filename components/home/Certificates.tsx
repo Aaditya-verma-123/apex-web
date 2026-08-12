@@ -2,33 +2,22 @@
 
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
-
-import CertificateHero from "@/components/certificates/CertificateHero";
 import CertificateGrid from "@/components/certificates/CertificateGrid";
-
-import { CertificateProvider } from "@/context/CertificateContext";
 
 export default function Certificates() {
   return (
-    <section
-      id="certificates"
-      className="relative py-28"
-    >
-      <CertificateProvider>
-        <Container>
-          <SectionTitle
-            eyebrow="Achievements"
-            title="Professional Certifications"
-            description="Verified credentials earned through continuous learning and hands-on practice."
-          />
+    <section className="py-24">
+      <Container>
+        <SectionTitle
+          eyebrow="Certifications"
+          title="My Certifications"
+          description="Professional certifications and learning milestones from my cybersecurity journey."
+        />
 
-          <div className="mt-14">
-            <CertificateHero />
-          </div>
-
+        <div className="mt-14">
           <CertificateGrid />
-        </Container>
-      </CertificateProvider>
+        </div>
+      </Container>
     </section>
   );
 }

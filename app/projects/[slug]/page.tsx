@@ -22,7 +22,7 @@ export default async function ProjectPage({
   const { slug } = await params;
 
   const project = projects.find(
-    (project) => project.slug === slug
+    (item) => item.slug === slug
   );
 
   if (!project) {
@@ -30,7 +30,7 @@ export default async function ProjectPage({
   }
 
   return (
-    <main className="pb-24">
+    <main>
       <ProjectHero project={project} />
 
       <ProjectOverview project={project} />
